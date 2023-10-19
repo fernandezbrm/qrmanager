@@ -1,0 +1,24 @@
+/**
+ * 
+ */
+package qrmanager.dev;
+
+/**
+ * @author Roberto Fernandez
+ *
+ */
+public class QRManager {
+	/** Constructor */
+	QRManager() {
+		// TODO Auto-generated method stub
+		System.out.println("QRManager Starting");
+	}
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		QRManager qrm = new QRManager();
+	}
+
+}

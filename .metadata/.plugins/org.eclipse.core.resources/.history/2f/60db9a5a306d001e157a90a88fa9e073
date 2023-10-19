@@ -1,0 +1,101 @@
+/**
+ * 
+ */
+package qrmanager.dev;
+
+import java.util.Random;
+
+import gnu.io.CommPort;
+import gnu.io.CommPortIdentifier;
+import gnu.io.SerialPort;
+
+import java.io.FileDescriptor;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+
+/**
+ * @author Roberto Fernandez
+ *
+ */
+public class QRReaderSerialPort implements Runnable {
+	private static final int PORT_OPEN_TIMEOUT_MS = 2000; 
+	private String portName;
+	private int speed;
+	private QRReaderListener qrReadListener;
+	private InputStream in;
+	private OutputStream out;
+
+	QRReaderSerialPort(String portName, int speed, QRReaderListener qrReadListener) throws Exception{
+		setPortName(portName);
+		setSpeed(speed);
+		setQrReadListener(qrReadListener);
+		// Get streams to write and read serial port
+		connect();
+		// Launch thread to read QRs from reader via serial port
+		Thread thread = new Thread(this);
+		thread.start();
+	}
+	
+	   void connect() throws Exception
+	    {
+	        CommPortIdentifier portIdentifier = CommPortIdentifier.getPortIdentifier(getPortName());
+	        if ( portIdentifier.isCurrentlyOwned() )
+	        {
+	            System.out.println("Error: Port " + getPortName() + " is currently in use");
+	        }
+	        else
+	        {
+	        	// TBD: What is 2nd argument value?
+	            CommPort commPort = portIdentifier.open(this.getClass().getName(), PORT_OPEN_TIMEOUT_MS);
+	            
+	            if ( commPort instanceof SerialPort )
+	            {
+	                SerialPort serialPort = (SerialPort) commPort;
+	                serialPort.setSerialPortParams(getSpeed(),SerialPort.DATABITS_8,SerialPort.STOPBITS_1,SerialPort.PARITY_NONE);
+	                
+	                this.in = serialPort.getInputStream();
+	                this.out = serialPort.getOutputStream();
+	            }
+	            else
+	            {
+	                System.out.println("Error: Only serial ports are handled by this example.");
+	            }
+	        }     
+	    }	
+	public void run() {
+		// TODO Auto-generated method stub
+		boolean exit = false;
+		while (!exit) {
+			try {
+				Thread.sleep(new Random(0).nextInt(20000));
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			getQrReadListener().qrDataReceived("{id:" + Thread.currentThread().getName() + ", name:" + portName.toString() + "}");
+			// System.out.println("QRReaderSerialPort " + portName + " thread awoke");
+		}
+	}
+	public int getSpeed() {
+		return speed;
+	}
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+	public String getPortName() {
+		return portName;
+	}
+	public void setPortName(String portName) {
+		this.portName = portName;
+	}
+	
+	public QRReaderListener getQrReadListener() {
+		return qrReadListener;
+	}
+	
+	public void setQrReadListener(QRReaderListener qrReadListener) {
+		this.qrReadListener = qrReadListener;
+	}
+}

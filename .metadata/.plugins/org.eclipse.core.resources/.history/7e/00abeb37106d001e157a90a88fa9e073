@@ -1,0 +1,48 @@
+/**
+ * 
+ */
+package qrmanager.dev;
+
+/**
+ * @author Roberto Fernandez
+ *
+ */
+public class QRManager {
+	private QRReaderSerialPort myQRReader;
+	private DigitalIOInterface myDio;
+	
+	/** Constructor */
+	QRManager(String portName, int speed, int doChannel) {
+		// TODO Auto-generated method stub
+		System.out.println("QRManager: portName = " + portName + ", speed = " + speed + ", doChannel = " + doChannel);
+		/** Create QRReaderSerialPort */
+		setMyQRReader(new QRReaderSerialPort(portName, speed));
+		System.out.println("QR reader serial port interface created")
+		/** Create digital output interface */
+		System.out.println("Digital output interface created");
+	}
+
+	public void setDio(DigitalIOInterface dio) {
+		this.myDio = dio;
+	}
+	
+	public DigitalIOInterface getMyDio() {
+		return myDio;
+	}
+
+	public void setMyQRReader(QRReaderSerialPort myQRReader) {
+		this.myQRReader = myQRReader;
+	}
+	
+	public QRReaderSerialPort getMyQRReader() {
+		return myQRReader;
+	}
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		QRManager qrm = new QRManager();
+	}
+
+}

@@ -1,0 +1,17 @@
+{
+  "C:\\Users\\Roberto Fernandez\\Downloads\\rxtx-2.1-7-bins-r2\\RXTXcomm.jar": {
+    "location": "C:\\Users\\Roberto Fernandez\\Downloads\\rxtx-2.1-7-bins-r2\\RXTXcomm.jar",
+    "status": "UNRESOLVED",
+    "error": "No call model found for \u0027C:\\Users\\Roberto Fernandez\\Downloads\\rxtx-2.1-7-bins-r2\\RXTXcomm.jar\u0027. Neither fingerprint \u0027e96c946be1e6537378fd532d2742b523df2725a4\u0027 nor symbolic name \u0027RXTXcomm\u0027 are known."
+  },
+  "C:\\Users\\Roberto Fernandez\\workspace\\QRManager\\src": {
+    "location": "C:\\Users\\Roberto Fernandez\\workspace\\QRManager\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\Roberto Fernandez\\workspace\\QRManager\\src\u0027. Skipped."
+  },
+  "C:\\Program Files\\Zulu\\zulu-8\\jre\\lib\\rt.jar": {
+    "location": "C:\\Program Files\\Zulu\\zulu-8\\jre\\lib\\rt.jar",
+    "status": "UNRESOLVED",
+    "error": "No call model found for \u0027C:\\Program Files\\Zulu\\zulu-8\\jre\\lib\\rt.jar\u0027. Neither fingerprint \u00275f2144446c02a462d71674a257d2be490d8b5336\u0027 nor symbolic name \u0027jre\u0027 are known."
+  }
+}

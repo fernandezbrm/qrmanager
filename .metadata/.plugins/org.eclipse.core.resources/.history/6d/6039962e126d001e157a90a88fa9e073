@@ -1,0 +1,5 @@
+package qrmanager.dev;
+
+public interface QrReaderListener {
+	public void qrDataReceived(String qr);
+}

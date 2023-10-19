@@ -1,0 +1,28 @@
+/**
+ * 
+ */
+package qrmanager.dev;
+
+/**
+ * @author Roberto Fernandez
+ *
+ */
+public class DigitalIOImpl implements DigitalIOInterface{
+
+	/** Constructor */
+	DigitalIOImpl(){
+	}
+	
+	/** setOutputOn */
+	public int setOutputOn(int channel) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/** setOutputOff */
+	public int setOutputOff(int channel) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}
