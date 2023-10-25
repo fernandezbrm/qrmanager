@@ -8,6 +8,6 @@ package qrmanager.dev;
  *
  */
 public interface DigitalIOInterface {
-	int setOutputOn(int channel);
-	int setOutputOff(int channel);
+	public int setOutputOn(int channel);
+	public int setOutputOff(int channel);
 }
